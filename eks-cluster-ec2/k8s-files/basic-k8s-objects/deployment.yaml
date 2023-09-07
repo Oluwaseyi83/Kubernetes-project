@@ -1,0 +1,88 @@
+### Rolling update STrategy
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  myapp
+  namespace: default
+  labels:
+    app: myapp
+    run: nginx
+    type: frontend
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+      run: nginx
+      type: frontend
+  replicas: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 5 #25%
+      maxUnavailable: 5 #25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  myapp
+        run: nginx
+        type: frontend
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  myapp
+        image: nginx:perl
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        
+
+# Recreate strategy
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  myapp
+#   namespace: default
+#   labels:
+#     app: myapp
+#     run: nginx
+#     type: frontend
+# spec:
+#   selector:
+#     matchLabels:
+#       app: myapp
+#       run: nginx
+#       type: frontend
+#   replicas: 10
+#   strategy:
+#     type: Recreate 
+#   template:
+#     metadata:
+#       labels:
+#         app:  myapp
+#         run: nginx
+#         type: frontend
+#     spec:
+#       # initContainers:
+#         # Init containers are exactly like regular containers, except:
+#           # - Init containers always run to completion.
+#           # - Each init container must complete successfully before the next one starts.
+#       containers:
+#       - name:  myapp
+#         image: nginx
+#         resources:
+#           requests:
+#             cpu: 100m
+#             memory: 100Mi
+#           limits:
+#             cpu: 100m
+#             memory: 100Mi
+        

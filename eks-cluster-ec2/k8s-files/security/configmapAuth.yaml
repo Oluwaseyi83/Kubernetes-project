@@ -1,0 +1,24 @@
+# # Please edit the object below. Lines beginning with a '#' will be ignored,
+# # and an empty file will abort the edit. If an error occurs while saving this file will be
+# # reopened with the relevant failures.
+# #
+# apiVersion: v1
+# data:
+#   mapRoles: |
+#     - groups:
+#       - system:bootstrappers
+#       - system:nodes
+#       rolearn: arn:aws:iam::389029577690:role/jjtech-demo-cluster-node-group_role
+#       username: system:node:{{EC2PrivateDNSName}}
+#   mapUsers: |
+#     - userarn: arn:aws:iam::389029577690:user/k8s-user
+#       username: k8s-user
+#       groups:
+#         - system:masters
+# kind: ConfigMap
+# metadata:
+#   creationTimestamp: "2023-06-24T18:24:12Z"
+#   name: aws-auth
+#   namespace: kube-system
+#   resourceVersion: "50777"
+#   uid: f1ff4023-148e-43ef-986f-dc90f9e6e223

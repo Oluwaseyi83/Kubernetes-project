@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: efs-storage
+provisioner: efs.csi.aws.com
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-07a5f8cfb7439ab5c
+    

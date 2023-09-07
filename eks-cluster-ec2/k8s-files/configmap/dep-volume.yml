@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "myapp"
+  namespace: default
+  labels:
+    app: "myapp"
+spec:
+  containers:
+  - name: myapp
+    image: nginx 
+    ports:
+    - containerPort:  80
+      name:  http
+    env:
+    - name: VERSION
+      valueFrom:
+        configMapKeyRef:
+          name: jjtech-cm
+          key: app-version
+    volumeMounts:
+        - name: app-version
+          mountPath: /opt
+  volumes:
+    - name: app-version
+      configMap:
+        name: jjtech-cm
+      

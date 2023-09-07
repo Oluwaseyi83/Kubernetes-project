@@ -1,0 +1,32 @@
+# In this example, replace <label-key> with the actual key of the label you want to match on the node, and <label-value> 
+# with the desired value of that label. The operator: In specifies an exact match for the label value. 
+# You can also use other operators like NotIn, Exists, DoesNotExist, etc., based on your requirements.
+
+# When you create or apply this pod definition, Kubernetes will only consider nodes that have the specified label key-value pair for scheduling the pod.
+# Nodes without the required label will be excluded from consideration.
+
+# Remember that node affinity is just one of the many factors that Kubernetes considers during scheduling, and 
+# it's not a strict guarantee. Other factors like resource availability, node conditions, and pod anti-affinity rules can still affect 
+# the final scheduling decision.
+
+# Run the command "kubectl label nodes node_name key=value" to label a node prior to running hte pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node #<label-key>
+                operator: In
+                values:
+                  - host1  #<label-value>
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 8080

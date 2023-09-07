@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: hostpath-volume
+              mountPath: /opt # Mount path inside the container
+      volumes:
+      - name: hostpath-volume
+        hostPath:
+          # directory location on host where pod is running
+          path: /data
+          # this field is optional
+          type: DirectoryOrCreate

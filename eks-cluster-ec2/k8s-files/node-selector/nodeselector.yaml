@@ -1,0 +1,23 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: my-app
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: my-app
+#   template:
+#     metadata:
+#       labels:
+#         app: my-app
+#     spec:
+#       containers:
+#         - name: nginx
+#           image: nginx
+#           ports:
+#             - containerPort: 8080
+#       nodeSelector: 
+#         node: host2 # key-value used to label nodes
+
+# # kubectl label nodes node_name key=value

@@ -1,0 +1,20 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: my-app
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: my-app
+#   template:
+#     metadata:
+#       labels:
+#         app: my-app
+#     spec:
+#       nodeName: ip-10-20-64-112.ec2.internal
+#       containers:
+#         - name: nginx
+#           image: nginx
+#           ports:
+#             - containerPort: 8080

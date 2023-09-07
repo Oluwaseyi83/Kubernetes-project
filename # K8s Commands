@@ -1,0 +1,97 @@
+# K8s Commands
+
+###################################################3
+General commands
+##########################
+
+alias k=kubectl
+alias kgp="kubectl get po" 
+alias kgn="kubectl get nodes"
+
+kubectl api-resources  # To get all api resources i.e their NAME, SHORTNAMES, APIVERSION, NAMESPACED, KIND
+
+Kubectl run -h # to get list of subcommands
+
+kubectl get <object e.g pod, deployment, service etc ...> -A # Get all object resources accross all namespaces in your cluster
+
+kubectl get all # To list all objects within the default namespace else add namespace (-n <name-of-namespace>) to list all objects within a specific namespace 
+
+
+#################################################
+K8s PODS
+##############################################
+
+kubectl run <pod-name> --image <image-name>
+
+kubectl get pods # To get pods in default namespace
+
+kubectl get pod --watch or -w  # To watch the process of pod creation
+
+kubectl describe pod <pod name> # Get the details about a pod
+
+Kubectl get pod <pod name> -o yaml # Print the manifest configueation file for the pod. This applies to every object in kubernetes.
+
+Kubectl logs <name of pod> # To logs of a particular pod. use ctrl C to stop the process
+
+kubectl get pods --show-labels # to show labels of pods
+
+kubectl delete pod <podname> # delete pod from default namespace
+
+kubectl create -f <yaml file name> # Create a new K8s resource and can only be used once for the same resource. i.e cannot be used to update the resource
+
+kubectl apply -f <yaml file name>  # used to create and manage resources created. i.e can be rerun multiple times fo the smae resources in case of future changes
+
+##########################################
+Kubectl namespace
+##########################################
+
+kubectl create namespace <name of namespace> # imperative command to create a namespace object
+
+kubectl api-resources --namespaced=false # list resources that are not namespace bound
+
+kubectl api-resources --namespaced=true # list resources that are namespace bound
+
+kubectl create -f <file name> --namespace <namsepace name> #  Create a deployment object in a namepsace. Only use this if the namespace was not mentioned in the ocnfiguration/manifest file
+
+Kubectl get --all --namespace <name of namespace> # To get all resources in a given namespace
+
+################################################
+Replicasets
+################################################
+
+kubectl create -f <file name> # Create replicat from file
+
+kubectl get replicaset # Get info about replicaset
+
+kubectl get replicaset <name of replicaset> # To delete replicaset
+
+kubectl replace -f <file name> # To update replicaset file in case you changed number of replicas
+
+kubectl scale --replicas=<number> replicaset <name of replicaset>
+
+
+##############################################
+Deployments
+##############################################
+
+kubectl create -f <file name> # Create replicat from file
+
+kubectl get deployment # Get info about deployment
+
+kubectl get deployment <name of deployment> # To delete deployment
+
+kubectl apply -f <file name> # To update deployment manifest file in case you changed number of replicas
+
+kubectl rollout undo deploy <name of deployment> # To undo the deployment nad rollback to the previous version
+
+kubectl delete deploy <name of deployment> # delete deployment 
+
+
+
+###########################################
+Services
+#############################################
+
+kubectl port-forward service/my-app 8080:80 # To port forward your service so you can access on your localhost
+
+minikube service my-app --url # Specific to minikube only. Used to get the url to access your app running on localhost

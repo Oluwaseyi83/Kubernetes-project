@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-app
+  labels:
+    app: green-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: green-app
+  template:
+    metadata:
+      labels:
+        app: green-app
+    spec:
+      containers:
+      - name: my-green-app
+        image: adamtravis/rollouts:green #deekshithsn/k8s-deployment-strategies
+        ports:
+        - name: http
+          containerPort: 8080
+        # env:
+        # - name: VERSION
+        #   value: v2.0.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        
