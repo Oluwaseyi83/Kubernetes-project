@@ -1,5 +1,4 @@
 
-
 resource "kubernetes_namespace" "aws_load_balancer_controller" {
   metadata {
     labels = {

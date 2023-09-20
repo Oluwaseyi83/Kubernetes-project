@@ -56,7 +56,7 @@ data:
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
     - userarn: arn:aws:iam::389029577690:user/k8s-user
-      username: k8s-user
+      username: jjtech-user
       groups:
         - system:masters
 kind: ConfigMap

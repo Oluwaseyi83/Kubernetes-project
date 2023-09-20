@@ -4,6 +4,8 @@
 General commands
 ##########################
 
+aws eks update-kubeconfig --name <insert name of cluster> --region <region>
+
 alias k=kubectl
 alias kgp="kubectl get po" 
 alias kgn="kubectl get nodes"

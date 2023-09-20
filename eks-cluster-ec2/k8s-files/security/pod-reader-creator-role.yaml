@@ -6,8 +6,8 @@ metadata:
   name: pod-reader-creator-role
 rules:
   - apiGroups: [""]
-    resources: ["pods", "namespaces", "nodes"]
-    verbs: ["get", "list", "watch", "create"]
-  - apiGroups: ["apps"]
-    resources: ["deployments", "daemonsets",statefulsets]
-    verbs: ["get", "list", "watch", "create", "update", "delete"]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+  # - apiGroups: ["apps"]
+  #   resources: ["deployments", "daemonsets",statefulsets]
+  #   verbs: ["get", "list", "watch", "create", "update", "delete"]

@@ -4,7 +4,7 @@ metadata:
   name: pod-reader-creator-binding
 subjects:
   - kind: User
-    name: k8s-user
+    name: jjtech-user
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
