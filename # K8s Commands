@@ -10,6 +10,8 @@ alias k=kubectl
 alias kgp="kubectl get po" 
 alias kgn="kubectl get nodes"
 
+kubectl create ns <name of namepsace>
+
 kubectl api-resources  # To get all api resources i.e their NAME, SHORTNAMES, APIVERSION, NAMESPACED, KIND
 
 Kubectl run -h # to get list of subcommands
