@@ -8,11 +8,6 @@ metadata:
     app: my-app
 spec:
   replicas: 5
-  strategy:
-    type: RollingUpdate
-    rollingupdate: 
-    maxsurge: 3
-    maxUnavaialable: 2
   selector:
     matchLabels:
       app: my-app
