@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name:  myapp
-  namespace: default
+  namespace: application
   labels:
     app: myapp
     run: nginx
@@ -53,6 +53,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: jjtech-pod
+  namespace: application
   labels:
     app: myapp
     run: nginx

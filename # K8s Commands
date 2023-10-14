@@ -39,6 +39,10 @@ Kubectl logs <name of pod> # To logs of a particular pod. use ctrl C to stop the
 
 kubectl get pods --show-labels # to show labels of pods
 
+kubectl get po -n <namepsace> --show-labels # to show labels attached to pods
+
+kubectl get po -n <namepsace> -o wide # to get list of nodes on which pods are deployed
+
 kubectl delete pod <podname> # delete pod from default namespace
 
 kubectl create -f <yaml file name> # Create a new K8s resource and can only be used once for the same resource. i.e cannot be used to update the resource
