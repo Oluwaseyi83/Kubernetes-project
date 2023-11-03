@@ -4,3 +4,4 @@ metadata:
   name: jjtech-cm
 data:
   app-version: "v30.0.0"
+# immutable: true  
