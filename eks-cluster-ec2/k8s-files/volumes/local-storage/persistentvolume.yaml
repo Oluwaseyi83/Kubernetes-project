@@ -5,12 +5,16 @@ kind: PersistentVolume
 metadata:
   name: my-local-pv
 spec:
+  persistentVolumeReclaimPolicy: Delete #Retain
   capacity:
     storage: 3Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
   storageClassName: local-storage  # Name of the StorageClass
+  # claimRef:
+  #   namespace: default
+  #   name: example-pvc
   local:
     path: /opt
   nodeAffinity:
@@ -20,5 +24,4 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - ip-10-20-107-160.ec2.internal
-                - ip-10-20-64-112.ec2.internal
+                - ip-10-20-107-121.ec2.internal

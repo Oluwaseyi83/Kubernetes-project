@@ -5,8 +5,7 @@ metadata:
 provisioner: efs.csi.aws.com
 reclaimPolicy: Retain
 allowVolumeExpansion: true
-
 parameters:
   provisioningMode: efs-ap
-  fileSystemId: fs-07a5f8cfb7439ab5c
+  fileSystemId: fs-0c57c50b75e014606
     
