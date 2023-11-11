@@ -15,6 +15,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: my-pod
+  namespace: application
 spec:
   containers:
     - name: nginx

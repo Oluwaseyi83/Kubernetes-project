@@ -1,0 +1,20 @@
+# ingress from app-pod in development namespace to db-pod on production namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ingress-from-app-pod
+  namespace: production
+spec:
+  podSelector:
+    matchLabels:
+      pod: db-pod
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            pod: app-pod
+      - namespaceSelector:
+          matchLabels:
+            env: dev
