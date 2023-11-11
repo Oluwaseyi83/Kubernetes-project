@@ -127,7 +127,7 @@ kubectl delete namespace <namespace>
 5. Restore backups
 
 ```bash
-velero restore create --from-backup <backupname>
+velero restore create <name of restor> --from-backup <backupname>
 ```
 
 6. Verify deployments/pods, resources etc and confirm they were restored

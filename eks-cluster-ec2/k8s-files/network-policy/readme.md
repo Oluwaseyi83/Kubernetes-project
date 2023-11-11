@@ -24,7 +24,7 @@ imagePullSecrets: {}
 installation:
   enabled: true
   kubernetesProvider: "EKS"
-
+  
 apiServer:
   enabled: true
 

@@ -41,3 +41,6 @@ spec:
       - podSelector:
           matchLabels:
             pod: app-pod
+      - namespaceselector:
+          matchlabesls:
+            env: prod
